@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In | DelicAI</title>
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/css/log-in.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <i class="fas fa-music logo-icon"></i>
+            <div class="logo-text">DelicAI</div>
+        </div>
+    </header>
+
+    <div class="login-wrapper">
+        <div class="login-box">
+            <h2>Welcome back</h2>
+            <form action="/log-in" method="post">
+                <div class="input-group">
+                    <label for="username">Email or Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Log In
+                </button>
+            </form>
+
+            <div class="extra-links">
+                <p>Don’t have an account? <a href="sign-up">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 <span>&nbsp;DelicAI</span>. All rights reserved.
+    </footer>
+</div>
+</body>
+</html>

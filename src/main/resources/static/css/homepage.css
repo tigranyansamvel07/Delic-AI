@@ -1,0 +1,75 @@
+/* Base reset + fonts */
+*{margin:0;padding:0;box-sizing:border-box;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif}
+html,body{width:100%;height:100%;background:linear-gradient(135deg,#1a2a6c,#b21f1f,#1a2a6c);overflow:hidden}
+.container{width:100vw;height:100vh;display:flex;flex-direction:column;background:transparent}
+
+/* Header & footer (kept from your style) */
+header{background:rgba(0,0,0,0.7);padding:20px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.1)}
+.logo{display:flex;align-items:center;gap:15px}
+.logo-icon{font-size:28px;color:#ff6b6b}
+.logo-text{font-size:24px;font-weight:700;background:linear-gradient(to right,#ff6b6b,#4ecdc4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header-buttons{display:flex;gap:15px}
+.btn{padding:10px 20px;border-radius:30px;border:none;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px}
+.btn-primary{background:linear-gradient(45deg,#ff6b6b,#ffa502);color:white}
+.btn-secondary{background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2)}
+
+footer{background:rgba(0,0,0,0.7);padding:20px 30px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.1)}
+.footer-links{display:flex;gap:20px}
+.footer-link{color:#aaa;text-decoration:none;transition:color .3s}
+.footer-link:hover{color:white}
+.social-icons{display:flex;gap:15px}
+.social-icon{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:white}
+
+/* Main area simplified: centered long search bar */
+.main-content{flex:1;display:flex;align-items:center;justify-content:center;padding:30px}
+.search-wrap{width:100%;max-width:1200px;padding:40px;display:flex;align-items:center;justify-content:center}
+
+::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.search-bar{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:rgba(255,255,255,0.06);
+    padding:14px 18px;
+    border-radius:40px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    border:1px solid rgba(255,255,255,0.06);
+}
+
+.search-bar input{
+    flex:1;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:white;
+    font-size:20px;
+    padding:6px 8px;
+}
+
+.search-bar .search-btn{
+    padding:10px 18px;
+    border-radius:30px;
+    border:none;
+    font-weight:700;
+    cursor:pointer;
+    background:linear-gradient(45deg,#ff6b6b,#ffa502);
+    color:white;
+    display:flex;align-items:center;gap:8px
+}
+
+.search-placeholder{color:rgba(255,255,255,0.6);font-size:18px}
+
+/* smaller screens */
+@media (max-width:600px){
+    .logo-text{font-size:18px}
+    .search-bar input{font-size:16px}
+    .search-wrap{padding:20px}
+}
+
+/* keep scrollbars usable for header/footer if content grows */
+.container, header, footer{ -webkit-font-smoothing:antialiased }

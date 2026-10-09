@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/css/results.css">
+    <script th:src="@{/js/results.js}" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <i class="fas fa-music logo-icon"></i>
+            <div class="logo-text">DelicAI: expand your taste</div>
+        </div>
+        <div class="header-buttons">
+            <button class="btn btn-secondary">
+                <i class="fas fa-search"></i> Similar to...
+            </button>
+            <button class="btn btn-primary">
+                <i class="fas fa-plus"></i> Save for later
+            </button>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <!-- Song List on the Left -->
+        <div class="song-list">
+            <h2><i class="fas fa-list"></i> Similar to <span th:text="${similarTo}"></span></h2>
+            <div th:if="${tracks == null or tracks.isEmpty()}">
+                <p>Nothing found</p>
+            </div>
+
+            <!-- Loop through tracks -->
+            <div th:each="track, status : ${tracks}"
+                 class="song-item track-item"
+                 th:attr="data-track-name=${track.trackName},
+                              data-artist-name=${track.artistName},
+                              data-album-cover=${track.albumCover},
+                              data-spotify-link=${track.spotifyLINK},
+                              data-youtube-link=${track.youtubeLINK},
+                              data-apple-music-link=${track.appleMusicLINK}"
+                 onclick="selectTrack(this)">
+                <div class="song-cover">
+                    <img th:src="${track.albumCover}" alt="Album cover"
+                         th:if="${track.albumCover != 'Unknown' and track.albumCover != 'none'}"
+                         class="album-cover-small"/>
+                    <div th:if="${track.albumCover == 'Unknown' or track.albumCover == 'none'}"
+                         class="no-cover">No Image</div>
+                </div>
+                <div class="song-info">
+                    <div class="song-title" th:text="${track.trackName}">Song Name</div>
+                    <div class="song-artist" th:text="${track.artistName}">Artist Name</div>
+                </div>
+                <div class="song-links">
+                    <a th:href="${track.spotifyLINK}" target="_blank"
+                       th:if="${track.spotifyLINK != 'Unknown' and track.spotifyLINK != 'none'}"
+                       onclick="event.stopPropagation()">
+                        <i class="fab fa-spotify"></i>
+                    </a>
+                    <a th:href="${track.youtubeLINK}" target="_blank"
+                       th:if="${track.youtubeLINK != 'Unknown' and track.youtubeLINK != 'none'}"
+                       onclick="event.stopPropagation()">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a th:href="${track.appleMusicLINK}" target="_blank"
+                       th:if="${track.appleMusicLINK != 'Unknown' and track.appleMusicLINK != 'none'}"
+                       onclick="event.stopPropagation()">
+                        <i class="fab fa-apple"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Player Section on the Right -->
+        <div class="player-section">
+            <div class="now-playing">
+                <div class="album-art" id="albumArt">
+                    <div class="album-art-placeholder" id="albumPlaceholder">
+                        <i class="fas fa-music"></i>
+                        <span>Select a song to play</span>
+                    </div>
+                    <img id="albumCoverImage" src="" alt="Album cover" style="display: none; width: 100%; height: 100%; border-radius: 20px; object-fit: cover;">
+                </div>
+                <div class="song-details">
+                    <div class="current-song-title" id="currentSongTitle">No song selected</div>
+                    <div class="current-song-artist" id="currentSongArtist">Click a song from the list</div>
+                    <div class="streaming-links" id="streamingLinks">
+                        <!-- Links will be populated when song is selected -->
+                    </div>
+                </div>
+            </div>
+            <div class="controls">
+                <button class="control-btn" onclick="playPrevious()">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="control-btn" onclick="playNext()">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a th:href="@{/homepage}" class="footer-link">Home</a>
+            <a href="#" class="footer-link">History</a>
+            <a th:href="@{/index}" class="footer-link">Log Out</a>
+        </div>
+        <div class="social-icons">
+            <div class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+            </div>
+            <div class="social-icon">
+                <i class="fab fa-twitter"></i>
+            </div>
+            <div class="social-icon">
+                <i class="fab fa-instagram"></i>
+            </div>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>

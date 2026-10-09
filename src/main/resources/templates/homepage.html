@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search...</title>
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/css/homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <i class="fas fa-music logo-icon"></i>
+            <div class="logo-text">DelicAI: expand your taste</div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="search-wrap">
+            <form class="search-bar" th:action="@{/homepage}" method="post">
+                <i class="fas fa-search" aria-hidden="true" style="font-size:18px;color:rgba(255,255,255,0.7)"></i>
+                <input name="searchInput" id="searchInput" type="search" placeholder="Search for a song, artist, genre..." aria-label="Search">
+                <button class="search-btn" type="submit"><i class="fas fa-arrow-right"></i> Search</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#" class="footer-link">Home</a>
+            <a href="#" class="footer-link">History</a>
+            <a href="index.html" class="footer-link">Log Out</a>
+        </div>
+        <div class="social-icons">
+            <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
+            <div class="social-icon"><i class="fab fa-twitter"></i></div>
+            <div class="social-icon"><i class="fab fa-instagram"></i></div>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
